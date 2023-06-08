@@ -9,6 +9,9 @@ body {
     min-height: 170vh;
     background-size: cover;
   }
+   .navbar-nav {
+    flex-direction: row;
+}
 
   /*!*navbaar style*!*/
 
