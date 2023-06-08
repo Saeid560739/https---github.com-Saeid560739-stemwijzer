@@ -7,7 +7,7 @@
         <div class="container-fluid">
             
             <a class="logo" href="#">
-                StemadWijzer
+                StemWijzer
             </a>
            
             <div class="" id="navbarNavAltMarkup">
