@@ -26,6 +26,9 @@
                 <div id="title">
                         <h1>Dashboard</h1>
                 </div>
+                <a class="submit" href="http://localhost/stemwijzer/public/addPartij">addd</a>
+                    
+                
 
             <?php //print_r($generalOfWeek[0]->value_sum) ?>
 
