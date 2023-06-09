@@ -26,9 +26,27 @@
                 <div id="title">
                         <h1>Dashboard</h1>
                 </div>
-                <a class="submit" href="http://localhost/stemwijzer/public/addPartij">addd</a>
+                <a class="succes_btn" href="http://localhost/stemwijzer/public/addPartij">addd</a>
                     
-                
+                <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th scope="col">Partij ID</th>
+                    <th scope="col">Partij naam</th>
+                    <th scope="col">Richting</th>
+                    <th scope="col">edit</th>
+                    <th scope="col">delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    </tr>
+                </tbody>
+                </table>
 
             <?php //print_r($generalOfWeek[0]->value_sum) ?>
 
