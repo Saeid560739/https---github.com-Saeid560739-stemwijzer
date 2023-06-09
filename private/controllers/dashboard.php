@@ -8,6 +8,8 @@ class dashboard extends Controller
                 $this->redirect("login");
             }
             $user = new User();
-            $this->view('dashboard');
+            $data = $user->where("ID", 1);
+            
+            $this->view('dashboard', ['data'=>$data]);
         }
 }

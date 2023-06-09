@@ -1,7 +1,7 @@
 
 <?php $this->view('inclodes/header')?>
 <div id="content">
-
+<?php print_r($data[0]->email) ?>
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
