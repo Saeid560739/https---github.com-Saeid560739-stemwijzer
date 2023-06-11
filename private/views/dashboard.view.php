@@ -3,7 +3,7 @@
 <div id="content">
 <?php print_r($data[0]->email) ?>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+   <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             
             <a class="logo" href="#">
@@ -19,14 +19,14 @@
                 </div>
             </div>
         </div>
-    </nav>
+    </nav>-->
 
 </div>
         <div id="content_container">
                 <div id="title">
                         <h1>Dashboard</h1>
                 </div>
-                <a class="succes_btn" href="http://localhost/stemwijzer/public/addPartij">addd</a>
+                    <a class="succes_btn" href="http://localhost/stemwijzer/public/addPartij">addd</a>
                     
                 <table class="table table-striped">
                 <thead>

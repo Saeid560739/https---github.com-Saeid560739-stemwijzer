@@ -11,14 +11,11 @@ class Home extends Controller
        $statement = new statement();
        $data = $statement->findAll();
 
-
         $this->view('home',[
             'data'=>$data
 
         ]);
     }
-
-
 }
 
 
