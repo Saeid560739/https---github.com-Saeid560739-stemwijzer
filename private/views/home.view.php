@@ -63,9 +63,10 @@
                 var statement = statements[index];
                 $('#statement').text(statement.text);
                 $('#antwoorden').empty();
-                $('#antwoorden').append('<button class="antwoord">Eens</button> ');
-                $('#antwoorden').append('<button class="antwoord">Weet ik niet</button> ');
-                $('#antwoorden').append('<button class="antwoord">Oneens</button>');
+                $('#antwoorden').append('<button class="btn btn-success antwoord rounded-circle shadow-lg p-4" data-antwoord="Eens"><i class="icon-nav" data-feather="thumbs-up"></button>');
+                $('#antwoorden').append('<button class="btn btn-light antwoord rounded-circle shadow-lg p-4" data-antwoord="Weet ik niet"><i class="icon-nav" data-feather="square"></button>');
+                $('#antwoorden').append('<button class="btn btn-danger antwoord rounded-circle shadow-lg p-4" data-antwoord="Oneens"><i class="icon-nav" data-feather="thumbs-down"></button>');
+                    feather.replace()
 
                 // Controleer of de stelling al eerder is beantwoord
                 var previousAnswer = getPreviousAnswer(index);
@@ -143,21 +144,18 @@
             }
         });
     </script>
-    <style>
-        .selected {
-            background-color: #ccc;
-        }
-    </style>
-</head>
-<body>
-<h1>Statements</h1>
-<div>
-    <p id="statement"></p>
+<div class="d-flex justify-content-center flex-column mb-3 text-center ">
+    <div class="p-2"><p id="statement"></p></div>
+
+</div>
+
+<div class="fixed-bottom d-flex justify-content-around mb-5">
+    <div type="button" id="antwoord1"></div>
     <div id="antwoorden"></div>
 </div>
+
 <div>
     <button id="vorige-btn">Vorige</button>
     <button id="volgende-btn">Volgende</button>
 </div>
-</body>
-</html>
+
