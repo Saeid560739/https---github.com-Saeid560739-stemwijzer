@@ -4,6 +4,10 @@
     {
         public function index()
         {
+            if(Auth::logged_in())
+            {
+                $this->redirect("dashboard");
+            }
             $errors = array();
             if(count($_POST) > 0)
             {

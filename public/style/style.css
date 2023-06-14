@@ -269,7 +269,8 @@ h1{
   font-family: arial, serif;
   border: none;
   margin-top: 50px;
-  margin-left: 17px;
+  margin-bottom: 40px;
+  margin-left: 0px;
 }
 .fixed_btn{
   text-decoration: none;
