@@ -22,7 +22,7 @@
     </nav>-->
 
 </div>
-        <div id="content_container">
+        
                 <div id="title">
                         <h1>Dashboard</h1>
                 </div>
@@ -59,5 +59,5 @@
         //print_r ($lastReport);
         ?>
 
-</div>
+
 <?php $this->view('inclodes/footer')?>

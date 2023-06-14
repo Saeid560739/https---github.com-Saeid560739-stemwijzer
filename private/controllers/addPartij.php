@@ -1,13 +1,28 @@
 <?php
 class addpartij extends Controller
 {
-    function index()
+    
+        public function index()
         {
-            if(!Auth::logged_in())
+            
+            $errors = array();
+            $data =  array();
+            if(count($_POST) > 0 )
             {
-                $this->redirect("login");
+                $user = new User();
+                if(isset($_POST['submit']))
+                {
+                    if($user->validate($_POST))
+                    {
+                        $user->addUser($_POST);
+                        $this->redirect('login');
+
+                    }else{
+                        $errors = $user->errors;
+                    }
+                }
             }
-            $user = new User();
-            $this->view('addPartij');
+            $this->view('addPartij', ['errors'=>$errors]);
+
         }
 }

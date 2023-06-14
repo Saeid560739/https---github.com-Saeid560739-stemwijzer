@@ -196,9 +196,16 @@ show statements
   }*/
   
 #title{
-  color: #2eb82e;
-  font-size: 30px;
-  font-family: arial, serif;
+  
+    margin-top: 21px;
+    color: #664EEF;
+    font-size: 30px;
+    font-family: arial, serif;
+    margin-left: 5%;
+
+}
+h1{
+  font-weight: bold;
 }
 .gegevens{
   padding: 20px;
