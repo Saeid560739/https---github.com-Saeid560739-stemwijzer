@@ -1,4 +1,20 @@
-<?php $this->view('inclodes/header')?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Statements</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
+    <style>
+        #statement {
+            transition: transform 0.05s ease-out;
+        }
+
+        .statement-hidden {
+            transform: translateX(-200%);
+        }
+    </style>
     <script>
         $(document).ready(function() {
             var statements = <?php echo json_encode($data); ?>;
@@ -32,7 +48,7 @@
 
             // Verwerk antwoord
             $(document).on('click', '.antwoord', function() {
-                var antwoord = $(this).text();
+                var antwoord = $(this).data('antwoord');
                 var politicalDirection = statements[statementIndex].political_direction;
 
                 // Controleer of de stelling al eerder is beantwoord
@@ -50,33 +66,40 @@
                     });
                 }
 
-                statementIndex++;
-                if (statementIndex < statements.length) {
-                    toonStatement(statements, statementIndex);
-                } else {
-                    berekenCoordinaten();
-                    toonResultaat();
-                }
+                $('#statement').addClass('statement-hidden');
+
+                setTimeout(function() {
+                    statementIndex++;
+                    if (statementIndex < statements.length) {
+                        toonStatement(statements, statementIndex);
+                    } else {
+                        berekenCoordinaten();
+                        toonResultaat();
+                    }
+                }, 400);
             });
 
             function toonStatement(statements, index) {
                 var statement = statements[index];
                 $('#statement').text(statement.text);
                 $('#antwoorden').empty();
-                $('#antwoorden').append('<button class="btn btn-success antwoord rounded-circle shadow-lg p-4" data-antwoord="Eens"><i class="icon-nav" data-feather="thumbs-up"></button>');
-                $('#antwoorden').append('<button class="btn btn-light antwoord rounded-circle shadow-lg p-4" data-antwoord="Weet ik niet"><i class="icon-nav" data-feather="square"></button>');
-                $('#antwoorden').append('<button class="btn btn-danger antwoord rounded-circle shadow-lg p-4" data-antwoord="Oneens"><i class="icon-nav" data-feather="thumbs-down"></button>');
-                    feather.replace()
+                feather.replace();
 
                 // Controleer of de stelling al eerder is beantwoord
                 var previousAnswer = getPreviousAnswer(index);
                 if (previousAnswer) {
                     $('button.antwoord').each(function() {
-                        if ($(this).text() === previousAnswer) {
+                        if ($(this).data('antwoord') === previousAnswer) {
                             $(this).addClass('selected');
                         }
                     });
                 }
+
+                // Update teller
+                var teller = (index + 1) + "/" + statements.length;
+                $('#teller').text(teller);
+
+                $('#statement').removeClass('statement-hidden');
             }
 
             function berekenCoordinaten() {
@@ -144,18 +167,33 @@
             }
         });
     </script>
-<div class="d-flex justify-content-center flex-column mb-3 text-center ">
-    <div class="p-2"><p id="statement"></p></div>
-
-</div>
-
-<div class="fixed-bottom d-flex justify-content-around mb-5">
-    <div type="button" id="antwoord1"></div>
-    <div id="antwoorden"></div>
-</div>
+</head>
+<body>
+<?php $this->view('inclodes/header')?>
 
 <div>
     <button id="vorige-btn">Vorige</button>
-    <button id="volgende-btn">Volgende</button>
+    <span id="teller"></span>
+</div>
+<div class="position-absolute top-50 start-50 translate-middle">
+    <div>
+        <p style="font-size: 30pt" id="statement"></p>
+        <div id="antwoorden"></div>
+    </div>
 </div>
 
+<div class="fixed-bottom mb-4">
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-success antwoord rounded-circle shadow-lg p-4" data-antwoord="Eens"><i class="icon-nav" data-feather="thumbs-up"></i></button>
+        </div>
+        <div class="col text-center">
+            <button class="btn btn-light antwoord rounded-circle shadow-lg p-4" data-antwoord="Weet ik niet"><i class="icon-nav" data-feather="square"></i></button>
+        </div>
+        <div class="col text-center">
+            <button class="btn btn-danger antwoord rounded-circle shadow-lg p-4" data-antwoord="Oneens"><i class="icon-nav" data-feather="thumbs-down"></i></button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
