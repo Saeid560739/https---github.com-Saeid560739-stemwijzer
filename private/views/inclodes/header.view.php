@@ -15,7 +15,7 @@
         <link rel="stylesheet" type="text/css" href="http://localhost/stemwijzer/public/style/style.css">
         <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    </head>
+        <script src="https://fontawesome.com/icons/house?f=sharp&s=light" crossorigin="anonymous"></script>    </head>
     <body>
 
     <nav class="navbar fixed-top" style="background-color: #664EEF">

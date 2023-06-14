@@ -7,8 +7,8 @@ class dashboard extends Controller
             {
                 $this->redirect("login");
             }
-            $user = new User();
-            $data = $user->where("ID", 1);
+            $political_party = new Political_party();
+            $data = $political_party->findAll();
             
             $this->view('dashboard', ['data'=>$data]);
         }

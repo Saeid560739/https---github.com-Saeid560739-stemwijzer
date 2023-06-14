@@ -169,6 +169,10 @@ show statements
    .navbar-nav {
     flex-direction: row;
 }
+
+#form-container{
+  margin-top: 65px;
+}
   /*!*navbaar style*!*/
 
 
@@ -203,6 +207,9 @@ show statements
     font-family: arial, serif;
     margin-left: 5%;
 
+}
+#aanmaken{
+  margin-left: 0px;
 }
 h1{
   font-weight: bold;

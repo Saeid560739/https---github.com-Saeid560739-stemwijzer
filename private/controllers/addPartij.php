@@ -9,16 +9,16 @@ class addpartij extends Controller
             $data =  array();
             if(count($_POST) > 0 )
             {
-                $user = new User();
+                $political_party = new Political_party();
                 if(isset($_POST['submit']))
                 {
-                    if($user->validate($_POST))
+                    if($political_party->validate($_POST))
                     {
-                        $user->addUser($_POST);
+                        $political_party->addPartij($_POST);
                         $this->redirect('login');
 
                     }else{
-                        $errors = $user->errors;
+                        $errors = $political_party->errors;
                     }
                 }
             }
