@@ -10,23 +10,24 @@
                 </div>
                 <div class="col-md-6 col-sm-8">
                         <form method="post" class="partij-form">
+                                <input type="hidden" name="id" value="<?=$data[0]->id;?>">
                                 <div class="mb-3">
                                         <label for="partijNaam" class="form-label">Partij naam</label>
-                                        <input type="text" name="name" class="form-control" id="partijNaam" aria-describedby="emailHelp">
+                                        <input type="text" name="name" class="form-control" value="<?=$data[0]->name;?>" id="partijNaam" aria-describedby="emailHelp">
                                 </div>
                                 <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Afkorting</label>
-                                        <input type="text" name="abbreviation" class="form-control" id="exampleInputPassword1">
+                                        <input type="text" name="abbreviation" class="form-control" value="<?=$data[0]->abbreviation;?>" id="exampleInputPassword1">
                                 </div>
                                 <div class="mb-3">
                                         <label for="partijNaam" class="form-label">Ideologie</label>
-                                        <input type="text" name="ideology" class="form-control" id="partijNaam" aria-describedby="emailHelp">
+                                        <input type="text" name="ideology" class="form-control" value="<?=$data[0]->ideology;?>" id="partijNaam" aria-describedby="emailHelp">
                                 </div>
                                 <div class="mb-3">
                                         <label for="partijNaam" class="form-label">Richting</label>
 
                                         <div class="input-group mb-3">
-                                                <select class="form-select" id="inputGroupSelect03" name="direction" aria-label="Example select with button addon">
+                                                <select class="form-select" id="inputGroupSelect03" name="direction" value="<?=$data[0]->direction;?>" aria-label="Example select with button addon">
                                                 <option selected>Richting...</option>
                                                 <option value="1">Richt</option>
                                                 <option value="2">Links</option>
@@ -36,21 +37,20 @@
                                 </div>
                                 <div class="mb-3">
                                         <label for="partijNaam" class="form-label">Leader</label>
-                                        <input type="text" name="leader" class="form-control" id="partijNaam" aria-describedby="emailHelp">
+                                        <input type="text" name="leader" class="form-control" value="<?=$data[0]->leader;?>" id="partijNaam" aria-describedby="emailHelp">
                                 </div>
                                 <div class="mb-3">
                                         <label for="partijNaam" class="form-label">Logo</label>
                                         <input type="file" name="logo" class="form-control" id="formFile" aria-describedby="emailHelp">
-                                </div>
                                 <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Samenvatting</label>
-                                        <input type="text" name="summary" class="form-control" id="exampleInputPassword1">
+                                        <input type="text" name="summary" class="form-control" value="<?=$data[0]->summary;?>" id="exampleInputPassword1">
                                 </div>
                                 <div class="mb-3" style="display:flex">
                                         <label style="padding-right: 20px " for="exampleInputPassword1" class="form-label">x</label>
-                                        <input type="number" name="x" max="10" class="form-control" id="exampleInputPassword1">
+                                        <input type="number" name="x" max="10" min="-10" class="form-control" value="<?=$data[0]->x;?>" id="exampleInputPassword1">
                                         <label style="padding-right: 20px; padding-left: 20px " for="exampleInputPassword1" class="form-label">y</label>
-                                        <input type="number" name="y" max="10" class="form-control" id="exampleInputPassword1">
+                                        <input type="number" name="y" max="10" min="-10" class="form-control" value="<?=$data[0]->y;?>" id="exampleInputPassword1">
                                 </div> 
                 
 

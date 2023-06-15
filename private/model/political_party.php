@@ -57,4 +57,7 @@ class Political_party extends Model
         $this->addObject($data);
     }
 
+
+
+
 }

@@ -60,7 +60,7 @@ class Model extends Database
         $str = trim($str,",");
         $data['id'] = $id;
         $query = "UPDATE $this->table SET $str WHERE id = :id"; 
-        //echo $query;    
+        echo $query;    
         return $this->query($query,$data);   
     }
     

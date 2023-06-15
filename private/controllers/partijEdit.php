@@ -10,34 +10,45 @@ class PartijEdit extends Controller
             }
         $errors = array();
         $political_party = new Political_party();
-        if(isset($_GET['id']))
+        if(isset($_POST['id']))
         {
-            $data = $political_party->where("id", $_GET['id']);
+            $data = $political_party->where("id", $_POST['id']);
             //print_r($data); 
-            if(($data) > 0)
-            {
+            
                 
                 if(count($_POST) > 0 )
                 {
-                    
+                   
                     if(isset($_POST['submit']))
                     {
+                        print_r($_POST);
                         if($political_party->validate($_POST))
                         {
-                            $political_party->addPartij($_POST);
+                                        
+                            $arr['name'] = $_POST['name'];
+                            $arr['abbreviation'] = $_POST['abbreviation'];
+                            $arr['ideology'] = $_POST['ideology'];
+                            $arr['direction'] = $_POST['direction'];
+                            $arr['logo'] = $_POST['logo'];
+                            $arr['summary'] = $_POST['summary'];
+                            $arr['leader'] = $_POST['leader'];
+                            $arr['x'] = $_POST['x'];
+                            $arr['y'] = $_POST['y'];
+
+                            $political_party->updateObject($_POST['id'], $arr);
                             $this->redirect('login');
-        
+                            
                         }else{
                             $errors = $political_party->errors;
                         }
                     }
                 }
-                $this->view('partijEdit', ['errors'=>$errors]);
-            }
-            else{
+                $this->view('partijEdit', ['errors'=>$errors, 'data'=>$data]);
+
+        }
+        else{
                 
-                $this->redirect('login');
-            }
+            $this->redirect('login');
         }
  
     }
