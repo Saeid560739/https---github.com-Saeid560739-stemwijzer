@@ -22,7 +22,7 @@ class Political_party extends Model
         {
             $this->errors['direction'] = "kies de richting";
         }
-        if(empty($data['leader']) || !preg_match('/^[a-zA-Z]+$/', $data['leader']))
+        if(empty($data['leader']))
         {
             $this->errors['leader'] = "leader mag alleen uit letters bestaan";
         }

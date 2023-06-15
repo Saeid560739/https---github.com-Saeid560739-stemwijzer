@@ -70,13 +70,10 @@
                             <form action="http://localhost/stemwijzer/public/partijEdit" method="post">
                                 <input type="submit" name="edit" class="btn btn-primary" value="edit  ">
                                 <input type="hidden" name="id" value="<?=$value->id;?>" >
-                                
-                            </form>
-                            <form action="http://localhost/stemwijzer/public/Delete" method="post">
                                 <input type="submit" name="delete" class="btn btn-danger" value="Delete">
-                                <input type="hidden" name="id" value="<?=$value->id;?>" >
-                                
+
                             </form>
+
 
                         </td>
                         </tr>

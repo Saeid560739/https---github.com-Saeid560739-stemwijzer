@@ -12,6 +12,13 @@ class PartijEdit extends Controller
         $political_party = new Political_party();
         if(isset($_POST['id']))
         {
+            if(isset($_POST['delete']))
+            {
+                $political_party->deleteObject($_POST['id']);
+                $this->redirect('login');
+                die();
+            }     
+
             $data = $political_party->where("id", $_POST['id']);
             //print_r($data); 
             
