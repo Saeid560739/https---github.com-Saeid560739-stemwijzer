@@ -20,7 +20,7 @@
 
     <nav class="navbar fixed-top" style="background-color: #664EEF">
         <div class="container-fluid">
-            <a class="logo" href="#">StemWijzer</a>
+            <a class="logo" href="http://localhost/stemwijzer/public/dashboard">StemWijzer</a>
 
             <div class="d-flex flex-end ">
                     <a class="username me-2" style="<?php if(!Auth::logged_in()){ echo ' display:none;"';}?>" aria-current="page" href="http://localhost/stemwijzer/public/userEdit">saeid</a>

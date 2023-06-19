@@ -20,7 +20,7 @@ class Addstelling extends Controller
                     if($statement->validate($_POST))
                     {
                         $statement->addstelling($_POST);
-                        //$this->redirect('stelling');
+                        $this->redirect('stellingen');
 
                     }else{
                         $errors = $statement->errors;
