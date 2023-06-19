@@ -28,10 +28,11 @@
 
                                         <div class="input-group mb-3">
                                                 <select class="form-select" id="inputGroupSelect03" name="direction" value="<?=$data[0]->direction;?>" aria-label="Example select with button addon">
-                                                <option selected>Richting...</option>
-                                                <option value="1">Richt</option>
-                                                <option value="2">Links</option>
-                                                <option value="3">center</option>
+                                                        <option selected>Richting...</option>
+                                                        <option value="Richt">Richt</option>
+                                                        <option value="Links">Links</option>
+                                                        <option value="Conservatief">Conservatief</option>
+                                                        <option value="Progressief">Progressief</option>
                                                 </select>
                                         </div>
                                 </div>

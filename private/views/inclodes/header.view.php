@@ -40,14 +40,13 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
-              
                         <li class="nav-item dropdown">
-
                            
-                                <li><a class="dropdown-item" href="http://localhost/stemwijzer/public/accountAanmaken">New admin</a></li>
-
-                           
-                        
+                                <li><a class="dropdown-item" href="http://localhost/stemwijzer/public/accountAanmaken">New admin</a></li>  
+                    </ul>
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">             
+                        <li class="nav-item dropdown">                        
+                                <li><a class="dropdown-item" href="http://localhost/stemwijzer/public/stellingen">Stellingen</a></li>                    
                     </ul>
                     <form class="d-flex mt-3" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

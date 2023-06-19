@@ -256,6 +256,11 @@ h1{
   width: auto;
   font-weight: bold;
 }
+#stelling
+{
+  height: 50px;
+  
+}
 
 .succes_btn{
   text-decoration: none;
