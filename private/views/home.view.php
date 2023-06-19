@@ -1,34 +1,71 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Statements</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
-    <style>
-        #statement {
-            transition: transform 0.05s ease-out;
-        }
+<?php $this->view('inclodes/header');
 
-        .statement-hidden {
-            transform: translateX(-200%);
-        }
-    </style>
-    <script>
-        $(document).ready(function() {
-            var statements = <?php echo json_encode($data); ?>;
-            var statementIndex = 0;
-            var politicalSpectrum = {
-                "x": 0,
-                "y": 0
-            };
-            var answeredStatements = [];
 
-            toonStatement(statements, statementIndex);
+?>
+<style>
+    #statement {
+        transition: transform 0.05s ease-out;
+    }
 
-            // Volgende statement
-            $('#volgende-btn').click(function() {
+    .statement-hidden {
+        transform: translateX(-200%);
+    }
+</style>
+<script>
+    $(document).ready(function() {
+        var statements = <?php echo json_encode($data); ?>;
+        var statementIndex = 0;
+        var politicalSpectrum = {
+            "x": 0,
+            "y": 0
+        };
+        var answeredStatements = [];
+
+        toonStatement(statements, statementIndex);
+
+        // Volgende statement
+        $('#volgende-btn').click(function() {
+            statementIndex++;
+            if (statementIndex < statements.length) {
+                toonStatement(statements, statementIndex);
+            } else {
+                berekenCoordinaten();
+                toonResultaat();
+            }
+        });
+
+        // Vorige statement
+        $('#vorige-btn').click(function() {
+            if (statementIndex > 0) {
+                statementIndex--;
+                toonStatement(statements, statementIndex);
+            }
+        });
+
+        // Verwerk antwoord
+        $(document).on('click', '.antwoord', function() {
+            var antwoord = $(this).data('antwoord');
+            var politicalDirection = statements[statementIndex].political_direction;
+
+
+            // Controleer of de stelling al eerder is beantwoord
+            var index = answeredStatements.findIndex(function(element) {
+                return element.statementIndex === statementIndex;
+            });
+
+            if (index !== -1) {
+                // Stelling is eerder beantwoord, wijzig het antwoord
+                answeredStatements[index].antwoord = antwoord;
+            } else {
+                answeredStatements.push({
+                    statementIndex: statementIndex,
+                    antwoord: antwoord
+                });
+            }
+
+            $('#statement').addClass('statement-hidden');
+
+            setTimeout(function() {
                 statementIndex++;
                 if (statementIndex < statements.length) {
                     toonStatement(statements, statementIndex);
@@ -36,140 +73,119 @@
                     berekenCoordinaten();
                     toonResultaat();
                 }
-            });
-
-            // Vorige statement
-            $('#vorige-btn').click(function() {
-                if (statementIndex > 0) {
-                    statementIndex--;
-                    toonStatement(statements, statementIndex);
-                }
-            });
-
-            // Verwerk antwoord
-            $(document).on('click', '.antwoord', function() {
-                var antwoord = $(this).data('antwoord');
-                var politicalDirection = statements[statementIndex].political_direction;
-
-                // Controleer of de stelling al eerder is beantwoord
-                var index = answeredStatements.findIndex(function(element) {
-                    return element.statementIndex === statementIndex;
-                });
-
-                if (index !== -1) {
-                    // Stelling is eerder beantwoord, wijzig het antwoord
-                    answeredStatements[index].antwoord = antwoord;
-                } else {
-                    answeredStatements.push({
-                        statementIndex: statementIndex,
-                        antwoord: antwoord
-                    });
-                }
-
-                $('#statement').addClass('statement-hidden');
-
-                setTimeout(function() {
-                    statementIndex++;
-                    if (statementIndex < statements.length) {
-                        toonStatement(statements, statementIndex);
-                    } else {
-                        berekenCoordinaten();
-                        toonResultaat();
-                    }
-                }, 400);
-            });
-
-            function toonStatement(statements, index) {
-                var statement = statements[index];
-                $('#statement').text(statement.text);
-                $('#antwoorden').empty();
-                feather.replace();
-
-                // Controleer of de stelling al eerder is beantwoord
-                var previousAnswer = getPreviousAnswer(index);
-                if (previousAnswer) {
-                    $('button.antwoord').each(function() {
-                        if ($(this).data('antwoord') === previousAnswer) {
-                            $(this).addClass('selected');
-                        }
-                    });
-                }
-
-                // Update teller
-                var teller = (index + 1) + "/" + statements.length;
-                $('#teller').text(teller);
-
-                $('#statement').removeClass('statement-hidden');
-            }
-
-            function berekenCoordinaten() {
-                // Bereken en toon de uiteindelijke coördinaten
-                for (var i = 0; i < answeredStatements.length; i++) {
-                    var statement = statements[answeredStatements[i].statementIndex];
-                    var antwoord = answeredStatements[i].antwoord;
-                    var politicalDirection = statement.political_direction;
-                    verwerkAntwoord(antwoord, politicalDirection, false);
-                }
-            }
-
-            function verwerkAntwoord(antwoord, politicalDirection, isPrevious) {
-                switch (politicalDirection) {
-                    case 'links':
-                        if (antwoord === 'Eens') {
-                            politicalSpectrum.x--;
-                        } else if (antwoord === 'Oneens') {
-                            politicalSpectrum.x++;
-                        }
-                        break;
-                    case 'rechts':
-                        if (antwoord === 'Eens') {
-                            politicalSpectrum.x++;
-                        } else if (antwoord === 'Oneens') {
-                            politicalSpectrum.x--;
-                        }
-                        break;
-                    case 'progressief':
-                        if (antwoord === 'Eens') {
-                            politicalSpectrum.y--;
-                        } else if (antwoord === 'Oneens') {
-                            politicalSpectrum.y++;
-                        }
-                        break;
-                    case 'conservatief':
-                        if (antwoord === 'Eens') {
-                            politicalSpectrum.y++;
-                        } else if (antwoord === 'Oneens') {
-                            politicalSpectrum.y--;
-                        }
-                        break;
-                }
-
-                if (!isPrevious) {
-                    $('#coordinaten').text("Coördinaten: " + politicalSpectrum.x + "," + politicalSpectrum.y);
-                }
-            }
-
-            function getPreviousAnswer(statementIndex) {
-                var previousAnswer = null;
-                var index = answeredStatements.findIndex(function(element) {
-                    return element.statementIndex === statementIndex;
-                });
-                if (index !== -1) {
-                    previousAnswer = answeredStatements[index].antwoord;
-                }
-                return previousAnswer;
-            }
-
-            function toonResultaat() {
-                var coordinaten = politicalSpectrum.x + "," + politicalSpectrum.y;
-
-                window.location.href = "<?=ROOT?>/result?coordinaten=" + coordinaten;
-            }
+            }, 400);
         });
-    </script>
+
+        function toonStatement(statements, index) {
+            var statement = statements[index];
+            $('#statement').text(statement.text);
+            $('#antwoorden').empty();
+            feather.replace();
+
+            // Controleer of de stelling al eerder is beantwoord
+            var previousAnswer = getPreviousAnswer(index);
+            if (previousAnswer) {
+                $('button.antwoord').each(function() {
+                    if ($(this).data('antwoord') === previousAnswer) {
+                        $(this).addClass('selected');
+                    }
+                });
+            }
+
+            // Update teller
+            var teller = (index + 1) + "/" + statements.length;
+            $('#teller').text(teller);
+
+            berekenCoordinaten(); // Added: Calculate and display coordinates
+            $('#statement').removeClass('statement-hidden');
+        }
+
+        function berekenCoordinaten() {
+            // Reset de coördinaten
+            politicalSpectrum.x = 0;
+            politicalSpectrum.y = 0;
+
+            // Bereken en toon de uiteindelijke coördinaten
+            for (var i = 0; i < answeredStatements.length; i++) {
+                var statement = statements[answeredStatements[i].statementIndex];
+                var antwoord = answeredStatements[i].antwoord;
+                var politicalDirection = statement.political_direction;
+                verwerkAntwoord(antwoord, politicalDirection, false);
+            }
+
+            $('#coordinaten').text("Coördinaten: " + politicalSpectrum.x + "," + politicalSpectrum.y); // Added: Display coordinates
+        }
+
+        function verwerkAntwoord(antwoord, politicalDirection, isPrevious) {
+            switch (politicalDirection) {
+                case 'links':
+                    if (antwoord === 'Eens') {
+                        politicalSpectrum.x--;
+                    } else if (antwoord === 'Oneens') {
+                        politicalSpectrum.x++;
+                    }
+                    break;
+                case 'rechts':
+                    if (antwoord === 'Eens') {
+                        politicalSpectrum.x++;
+                    } else if (antwoord === 'Oneens') {
+                        politicalSpectrum.x--;
+                    }
+                    break;
+                case 'progressief':
+                    if (antwoord === 'Eens') {
+                        politicalSpectrum.y++;
+                    } else if (antwoord === 'Oneens') {
+                        politicalSpectrum.y--;
+                    }
+                    break;
+                case 'conservatief':
+                    if (antwoord === 'Eens') {
+                        politicalSpectrum.y--;
+                    } else if (antwoord === 'Oneens') {
+                        politicalSpectrum.y++;
+                    }
+                    break;
+            }
+
+            if (!isPrevious) {
+                $('#coordinaten').text("Coördinaten: " + politicalSpectrum.x + "," + politicalSpectrum.y); // Added: Display coordinates after each statement
+            }
+        }
+
+        function getPreviousAnswer(statementIndex) {
+            var previousAnswer = null;
+            var index = answeredStatements.findIndex(function(element) {
+                return element.statementIndex === statementIndex;
+            });
+            if (index !== -1) {
+                previousAnswer = answeredStatements[index].antwoord;
+            }
+            return previousAnswer;
+        }
+
+        function toonResultaat() {
+            var coordinaten = politicalSpectrum.x + "," + politicalSpectrum.y;
+
+            // Coördinaten opslaan in de sessie via een AJAX-verzoek
+            $.ajax({
+                type: "POST",
+                url: "private/core/functions.php", // De URL naar het PHP-script dat de coördinaten opslaat
+                data: { coordinaten: coordinaten },
+                success: function(response) {
+                    // Succesvol opgeslagen
+                    console.log("Coördinaten opgeslagen in sessie");
+                }
+            });
+
+            // Navigeer naar de andere pagina
+            window.location.href = "<?=ROOT?>/result";
+        }
+
+    });
+</script>
 </head>
 <body>
-<?php $this->view('inclodes/header')?>
 
 <div>
     <button id="vorige-btn">Vorige</button>
@@ -195,5 +211,8 @@
         </div>
     </div>
 </div>
-</body>
-</html>
+
+
+<div class="position-fixed bottom-0 end-0 p-3">
+    <div id="coordinaten"></div>
+</div>
