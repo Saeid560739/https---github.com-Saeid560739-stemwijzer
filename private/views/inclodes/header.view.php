@@ -34,7 +34,7 @@
 
             <div class="offcanvas offcanvas-end" tabindex="3" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                    
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
@@ -42,16 +42,13 @@
 
                         <li class="nav-item dropdown">
                            
-                                <li><a class="dropdown-item" href="http://localhost/stemwijzer/public/accountAanmaken">New admin</a></li>  
+                                <a class="dropdown-item" href="http://localhost/stemwijzer/public/accountAanmaken">New admin</a></li>  
                     </ul>
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">             
                         <li class="nav-item dropdown">                        
-                                <li><a class="dropdown-item" href="http://localhost/stemwijzer/public/stellingen">Stellingen</a></li>                    
+                                <a class="dropdown-item" href="http://localhost/stemwijzer/public/stellingen">Stellingen</a></li>                    
                     </ul>
-                    <form class="d-flex mt-3" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+
                 </div>
             </div>
         </div>
