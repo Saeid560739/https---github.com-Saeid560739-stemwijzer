@@ -256,6 +256,20 @@ h1{
   width: auto;
   font-weight: bold;
 }
+#stelling
+{
+  height: 50px;
+  
+}
+.dropdown-item{
+  padding: 20px;
+  text-align: center;
+  font-size: 20px;
+}
+.btn-close, .navbar-nav:hover{
+  background-color: #664EEF;
+}
+
 
 .succes_btn{
   text-decoration: none;

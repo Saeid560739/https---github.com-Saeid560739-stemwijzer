@@ -19,7 +19,7 @@ class Statement extends Model
         $this->errors = array();
 
         //check naam
-        if (empty($DATA['statement']) || !preg_match('/^[a-zA-Z]+$/', $DATA['statement'])) {
+        if (empty($DATA['statement'])) {
             $this->errors['statement'] = "Stelling mag alleen uit letters bestaan";
         }
 
@@ -29,6 +29,12 @@ class Statement extends Model
         }
 
         return false;
+    }
+    public function addstelling($DATA)
+    {          
+        $data['text'] = $DATA['statement'];
+        $data['political_direction'] = $DATA['direction'];
+        $this->addObject($data);
     }
 
 }

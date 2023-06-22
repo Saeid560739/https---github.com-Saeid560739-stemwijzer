@@ -54,7 +54,10 @@
                         
                         </tr>
                     </thead>
-                <?php foreach( $data as $key => $value ):?>
+                <?php 
+                if($data):
+                    foreach( $data as $key => $value ):
+                ?>
                     <tbody>
                         <tr style="height:70px">
                         <th style="width:5%" scope="row"><?=$value->id;?></th>
@@ -68,7 +71,7 @@
                         <td style="width:5%"><?=$value->y;?></td>
                         <td style="width:20%" style="display:flex">
                             <form action="http://localhost/stemwijzer/public/partijEdit" method="post">
-                                <input type="submit" name="edit" class="btn btn-primary" value="edit  ">
+                                <input type="submit" name="edit" class="btn btn-primary" value="Edit  ">
                                 <input type="hidden" name="id" value="<?=$value->id;?>" >
                                 <input type="submit" name="delete" class="btn btn-danger" value="Delete">
 
@@ -78,7 +81,10 @@
                         </td>
                         </tr>
                     </tbody>
-                    <?php endforeach;?>
+                    <?php 
+                        endforeach;
+                    endif;
+                    ?>
                     </table>
                     </div>
                     <div class="col-md-1">
