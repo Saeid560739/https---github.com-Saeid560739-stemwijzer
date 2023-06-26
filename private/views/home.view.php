@@ -187,8 +187,8 @@
 </head>
 <body>
 
-<div>
-    <button id="vorige-btn">Vorige</button>
+<div class="d-flex justify-content-between ms-4 me-4">
+    <button class="back btn btn antwoord rounded-circle shadow-lg p-3" id="vorige-btn "><i class="icon-nav" data-feather="arrow-left"></i></button>
     <span id="teller"></span>
 </div>
 <div class="position-absolute top-50 start-50 translate-middle">
@@ -204,7 +204,7 @@
             <button class="btn btn-success antwoord rounded-circle shadow-lg p-4" data-antwoord="Eens"><i class="icon-nav" data-feather="thumbs-up"></i></button>
         </div>
         <div class="col text-center">
-            <button class="btn btn-light antwoord rounded-circle shadow-lg p-4" data-antwoord="Weet ik niet"><i class="icon-nav" data-feather="square"></i></button>
+            <button class="back btn btn-light antwoord rounded-circle shadow-lg p-4" data-antwoord="Weet ik niet"><i class="icon-nav" data-feather="square"></i></button>
         </div>
         <div class="col text-center">
             <button class="btn btn-danger antwoord rounded-circle shadow-lg p-4" data-antwoord="Oneens"><i class="icon-nav" data-feather="thumbs-down"></i></button>

@@ -21,13 +21,18 @@
     <nav class="navbar fixed-top" style="background-color: #664EEF">
         <div class="container-fluid">
             <a class="logo" href="http://localhost/stemwijzer/public/dashboard">StemWijzer</a>
+    <?php
+    $actual_link = $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $linkArray = explode("/", $actual_link);
+    $finalDescription = $linkArray[0]."/".$linkArray[1]."/".$linkArray[2]."/".$linkArray[3]."/".$linkArray[4];
 
-            <div class="d-flex flex-end ">
-                    <a class="username me-2" style="<?php if(!Auth::logged_in()){ echo ' display:none;"';}?>" aria-current="page" href="http://localhost/stemwijzer/public/userEdit">saeid</a>
-                    <div class="uitloggen_btn me-2" style="<?php if(!Auth::logged_in()){ echo ' display:none;"';}?>">
-                        <a class="uitloggen" href="http://localhost/stemwijzer/public/log_out">Uitloggen</a>
+    ?>
+            <div class="d-flex flex-end">
+                    <a class="username me-2" style="<?php if($finalDescription == ROOT){ echo ' display:none"';}?>'){ echo ' display:none"';}?>" aria-current="page" href="http://localhost/stemwijzer/public/userEdit">saeid</a>
+                    <div class="uitloggen_btn me-2 " style="<?php if($finalDescription == ROOT){ echo ' display:none"';}?>">
+                        <a class="uitloggen" style="<?php if($finalDescription == ROOT){ echo ' display:none"';}?>" href="http://localhost/stemwijzer/public/log_out">Uitloggen</a>
                     </div>
-                <button class="navbar-toggler bg-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <button class="navbar-toggler bg-white" style="<?php if($finalDescription == ROOT){ echo ' display:none"';}?>" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>

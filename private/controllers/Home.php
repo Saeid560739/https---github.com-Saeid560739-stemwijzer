@@ -8,8 +8,8 @@ class Home extends Controller
     function index()
     {
 
-       $statement = new statement();
-       $data = $statement->findAll();
+        $statement = new statement();
+        $data = $statement->findAll();
 
         $this->view('home',[
             'data'=>$data
@@ -18,5 +18,4 @@ class Home extends Controller
     }
 
 }
-
 

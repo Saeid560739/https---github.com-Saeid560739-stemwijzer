@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61ebc6a6-9171-4d7a-a05e-010bb81c7279" name="Changes" comment="added result.view.php to calculate results">
-      <change beforePath="$PROJECT_DIR$/../Sunrace" beforeDir="false" afterPath="$PROJECT_DIR$/../Sunrace" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Twirling-team-Sparkle" beforeDir="false" afterPath="$PROJECT_DIR$/../Twirling-team-Sparkle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Twirling-team-Sparkle3.0" beforeDir="false" afterPath="$PROJECT_DIR$/../Twirling-team-Sparkle3.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/private/controllers/landingpage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/private/views/landingpage.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/private/controllers/Home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private/views/home.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/private/views/home.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private/views/inclodes/header.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/private/views/inclodes/header.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private/views/result.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/private/views/result.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/style/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/style/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,19 +34,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/stemwijzer&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/xampp/htdocs/Twirling-team-Sparkle",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -53,6 +58,8 @@
       <workItem from="1686303946854" duration="3126000" />
       <workItem from="1686640975143" duration="26453000" />
       <workItem from="1687426915469" duration="84000" />
+      <workItem from="1687725757608" duration="145000" />
+      <workItem from="1687725916875" duration="22630000" />
     </task>
     <task id="LOCAL-00001" summary="added statements and a home page">
       <created>1686305579974</created>
